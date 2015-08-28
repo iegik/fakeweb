@@ -31,7 +31,7 @@ function interceptable(uri, method) {
             var hostname = url.parse(uri).hostname
               , requestIsLocal = (hostname == "localhost" || hostname == "127.0.0.1")
               ;
-            if (allowLocalConnect === true && requestIsLocal) {
+            if (allowLocalConnect === true && requestIsLocal && url.parse(uri).port != '4444') {
                 return false;
             }
             console.error("FAKEWEB: Unhandled" + method + "request to " + uri);
